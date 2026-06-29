@@ -22,6 +22,16 @@ app.use(morgan('dev'))
 app.use('/api/users', userRoutes)
 app.use('/api/research', researchRoutes)
 app.use('/api/auth', authRoutes)
+app.get('/api/diagnostic', async (req, res) => {
+  try {
+    const symbol = req.query.symbol || 'AAPL';
+    const yahooFinance = (await import('yahoo-finance2')).default;
+    const test = await yahooFinance.quote(symbol);
+    res.json({ success: true, symbol, data: test });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message, stack: err.stack });
+  }
+})
 app.get('/api', (req, res) => res.json({ message: 'API is running' }))
 
 // Error Handler
