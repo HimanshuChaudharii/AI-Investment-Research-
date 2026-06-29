@@ -3,6 +3,7 @@ services:
     name: aequitas-backend
     env: node
     plan: free
+    rootDir: invest
     buildCommand: npm install
     startCommand: npm start
     envVars:
