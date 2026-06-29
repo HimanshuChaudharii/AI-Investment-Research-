@@ -7,7 +7,9 @@ import YahooFinance from 'yahoo-finance2';
 
 const yahooFinance = new YahooFinance();
 
-const LOCAL_DB_PATH = path.resolve('server/data/history.json');
+const LOCAL_DB_PATH = process.env.VERCEL 
+  ? path.join('/tmp', 'history.json')
+  : path.resolve('server/data/history.json');
 
 // Ensure the local data directory exists
 function ensureLocalDataDir() {
