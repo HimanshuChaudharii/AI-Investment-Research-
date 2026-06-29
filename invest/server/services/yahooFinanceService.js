@@ -176,7 +176,13 @@ class YahooFinanceService {
         title: item.title,
         publisher: item.publisher,
         link: item.link,
-        date: item.providerPublishTime ? new Date(item.providerPublishTime * 1000).toISOString() : new Date().toISOString(),
+        date: item.providerPublishTime 
+          ? (item.providerPublishTime instanceof Date 
+              ? item.providerPublishTime.toISOString() 
+              : new Date(typeof item.providerPublishTime === 'number' && item.providerPublishTime < 10000000000 
+                  ? item.providerPublishTime * 1000 
+                  : item.providerPublishTime).toISOString())
+          : new Date().toISOString(),
         summary: item.title || 'Summary unavailable'
       })).slice(0, 8); // Keep latest 8 news items
 
