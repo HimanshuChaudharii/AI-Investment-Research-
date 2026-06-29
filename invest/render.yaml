@@ -11,10 +11,10 @@ services:
       - key: PORT
         value: 5000
       - key: MONGO_URI
-        placeholder: "mongodb+srv://..."
+        sync: false
       - key: GEMINI_API_KEY
-        placeholder: "Your Gemini API key"
+        sync: false
       - key: GOOGLE_CLIENT_ID
-        placeholder: "Your Google OAuth Client ID"
+        sync: false
       - key: JWT_SECRET
-        placeholder: "Create a secure random secret string"
+        sync: false
