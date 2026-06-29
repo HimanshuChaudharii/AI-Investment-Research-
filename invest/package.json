@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server/index.js",
     "server": "nodemon server/index.js",
     "client": "cd client && npm run dev"
   },
